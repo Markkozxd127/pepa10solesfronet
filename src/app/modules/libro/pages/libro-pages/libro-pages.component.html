@@ -1,0 +1,169 @@
+
+
+<div class="container">
+  <h2>Agregar RESERVA</h2>
+  <div class="card form-card">
+    <div class="card-body">
+      <form (submit)="agregarLibro()">
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <label for="fecha">Título:</label>
+              <input type="text" id="fecha" [(ngModel)]="nuevoLibro.fecha" name="fecha" class="form-control"
+                required>
+              </div>
+              <div class="colO">
+                <div class="form-group">
+                  <label for="cantidad">Fecha de Lanzamiento:</label>
+                  <input type="text" id="cantidad" [(ngModel)]="nuevoLibro.cantidad" name="cantidad" class="form-control"
+                    required>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label for="tipopago">Idioma:</label>
+                  <input type="text" id="tipopago" [(ngModel)]="nuevoLibro.tipopago" name="tipopago" class="form-control"
+                    required>
+    
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <label for="totalventa">Número de Páginas:</label>
+                  <input type="text" id="totalventa" [(ngModel)]="nuevoLibro.totalventa" name="totalventa" class="form-control"
+
+                    required>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="descuento">Descripción:</label>
+              <textarea id="descuento" [(ngModel)]="nuevoLibro.descuento" name="descuento" class="form-control"
+                required></textarea>
+            </div>
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label for="totalneto">Nombre de la Portada:</label>
+                  <input type="text" id="totalneto" [(ngModel)]="nuevoLibro.totalneto" name="totalneto" class="form-control"
+                    required>
+                </div>
+              </div>
+
+
+
+
+
+
+
+
+
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-group">
+              <label for="confirmado">Número de Páginas:</label>
+              <input type="text" id="confirmado" [(ngModel)]="nuevoLibro.confirmado" name="confirmado" class="form-control"
+                required>
+            </div>
+          </div>
+        <div class="form-group">
+          <label for="anulado">Descripción:</label>
+          <textarea id="anulado" [(ngModel)]="nuevoLibro.anulado" name="anulado" class="form-control"
+            required></textarea>
+          </div>
+
+
+
+
+
+        
+
+
+
+
+
+
+
+          <div class="col">
+            <div class="form-group">
+              <label for="autor">Autor:</label>
+              <select id="autor" [(ngModel)]="nuevoLibro.cliente" name="autor" class="form-control" required>
+                <option value="0" disabled>Selecciona un autor</option>
+                <option *ngFor="let autor of autores" [value]="autor.id">{{ autor.apellidos }}</option>
+              </select>
+            </div>
+          </div>
+        
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <label for="editorial">Editorial:</label>
+              <select id="editorial" [(ngModel)]="nuevoLibro.paquete" name="editorial" class="form-control" required>
+                <option value="0" disabled>Selecciona una editorial</option>
+                <option *ngFor="let editorial of editoriales" [value]="editorial.id">{{ editorial.nombre }}
+                </option>
+              </select>
+            </div>
+          </div>
+         
+          <div class="col">
+            <div class="form-group">
+              <label for="categoria">Categoría:</label>
+              <select id="categoria" [(ngModel)]="nuevoLibro.empleado" name="categoria" class="form-control" required>
+                <option value="0" disabled>Selecciona una categoría</option>
+                <option *ngFor="let categoria of categorias" [value]="categoria.id">{{ categoria.nombrec }}
+                </option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+        <button type="submit" class="btn btn-primary">Agregar Libro</button>
+        <button type="button" class="btn btn-primary" (click)="editBook()">Editar Libro</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<div class="container">
+  <h2>List of RESERVA</h2>
+  <div class="row">
+    <div *ngFor="let libro of libros" class="col-md-4">
+      <div class="card">
+        <div class="xxx">
+          <div class="card-body">
+            <h5 class="card-title">{{ libro.fecha }}</h5>
+            <p class="card-text">
+              <strong>Fecha:</strong> {{ libro.cantidad }}<br>
+              <strong>Idioma:</strong> {{ libro.tipopago }}<br>
+              <strong>Paginas:</strong> {{ libro.totalventa }}<br>
+              <strong>Descripcion:</strong> {{ libro.descuento }}<br>
+              <strong>Portada:</strong> {{ libro.totalneto }}<br>
+              <strong>Descripcion:</strong> {{ libro.confirmado }}<br>
+              <strong>Portada:</strong> {{ libro.anulado }}<br>
+
+
+              
+              <strong>Nombre Autor:</strong> {{ libro.cliente.apellidos }}<br>
+              <strong>Editorial:</strong> {{ libro.paquete.nombre }}<br>
+
+              <strong>Categoria:</strong> {{ libro.empleado.nombrec }}<br>
+
+            </p>
+            <button class="btn btn-danger" (click)="eliminarLibro(libro.id)">Eliminar</button>
+            <button class="btn btn-primary" (click)="cargarDatosLibroParaEdicion(libro.id)">Editar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
